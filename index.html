@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sigap Darurat — Panduan Pertolongan Pertama</title>
+<meta name="description" content="Panduan pertolongan pertama sederhana, asisten pencari panduan, dan pintasan WhatsApp ke rumah sakit terdekat.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap top-in">
+    <svg class="logo" viewBox="0 0 48 48" aria-hidden="true">
+      <rect width="48" height="48" rx="12" fill="#C62828"/>
+      <path d="M6 26h10l4-9 6 17 5-12 3 4h8" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <div>
+      <h1>Sigap Darurat</h1>
+      <p class="tag">Panduan pertolongan pertama, singkat dan jelas</p>
+    </div>
+  </div>
+</header>
+
+<div class="sos" role="region" aria-label="Nomor darurat">
+  <div class="wrap sos-in">
+    <span class="sos-text">Kondisi mengancam nyawa? Telepon dulu.</span>
+    <a class="btn btn-sos" href="tel:112">Telepon 112</a>
+    <a class="btn btn-sos" href="tel:119">Telepon 119 (Ambulans)</a>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <section aria-labelledby="h-ask" class="block">
+    <h2 id="h-ask">Tanya asisten</h2>
+    <p class="hint">Ceritakan kondisinya dengan kata sendiri, misalnya "anak tersedak kacang" atau "tangan melepuh kena air panas".</p>
+    <form id="askForm" class="ask">
+      <label for="askInput" class="sr">Kondisi korban</label>
+      <input id="askInput" type="text" autocomplete="off" placeholder="Apa yang terjadi?" required>
+      <button class="btn btn-main" type="submit">Cari panduan</button>
+    </form>
+    <div id="askResult" aria-live="polite"></div>
+  </section>
+
+  <section aria-labelledby="h-guides" class="block">
+    <div class="row-between">
+      <h2 id="h-guides">Panduan pertolongan pertama</h2>
+      <div class="chips" role="group" aria-label="Filter tingkat urgensi">
+        <button class="chip on" data-f="all" type="button">Semua</button>
+        <button class="chip" data-f="kritis" type="button">Kritis</button>
+        <button class="chip" data-f="segera" type="button">Segera</button>
+        <button class="chip" data-f="ringan" type="button">Ringan</button>
+      </div>
+    </div>
+    <div id="guides"></div>
+  </section>
+
+  <section aria-labelledby="h-rs" class="block">
+    <h2 id="h-rs">Hubungi rumah sakit lewat WhatsApp</h2>
+    <p class="hint">WhatsApp bukan pengganti telepon 112/119. Pakai ini untuk memberi kabar ke RS yang akan kamu tuju atau menanyakan IGD.</p>
+
+    <div class="grid2">
+      <div class="card">
+        <h3>1. Lokasi dan RS terdekat</h3>
+        <button id="btnLoc" class="btn btn-main" type="button">Ambil lokasi saya</button>
+        <p id="locStatus" class="hint" aria-live="polite">Lokasi belum diambil.</p>
+        <a id="mapLink" class="btn btn-line" href="https://www.google.com/maps/search/rumah+sakit+terdekat" target="_blank" rel="noopener">Cari RS terdekat di Google Maps</a>
+        <p class="hint">Buka RS di peta, lalu lihat nomor telepon/WhatsApp di halaman detailnya atau situs resminya. Simpan nomornya di bawah.</p>
+      </div>
+
+      <div class="card">
+        <h3>2. Simpan kontak WA rumah sakit</h3>
+        <form id="rsForm" class="stack">
+          <label for="rsName">Nama rumah sakit</label>
+          <input id="rsName" type="text" required placeholder="mis. IGD RS ...">
+          <label for="rsPhone">Nomor WhatsApp</label>
+          <input id="rsPhone" type="tel" inputmode="tel" required placeholder="08xx atau 628xx">
+          <button class="btn btn-main" type="submit">Simpan kontak</button>
+          <p id="rsError" class="err" role="alert" hidden></p>
+        </form>
+        <p class="hint">Kontak disimpan hanya di browser ini.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>3. Tulis pesan dan kirim</h3>
+      <div class="grid2">
+        <div class="stack">
+          <label for="msgPatient">Nama / usia korban (opsional)</label>
+          <input id="msgPatient" type="text" placeholder="mis. Ibu, 60 tahun">
+        </div>
+        <div class="stack">
+          <label for="msgCond">Kondisi</label>
+          <input id="msgCond" type="text" placeholder="mis. pingsan, napas masih ada">
+        </div>
+      </div>
+      <label for="msgPreview">Pesan yang akan dikirim</label>
+      <textarea id="msgPreview" rows="5" readonly></textarea>
+      <button id="btnCopy" class="btn btn-line" type="button">Salin pesan</button>
+      <div id="contacts" class="contacts"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p><strong>Penting:</strong> Aplikasi ini hanya panduan umum dan bukan pengganti tenaga medis. Pada kondisi yang mengancam nyawa, segera telepon 112 atau 119 dan ikuti arahan petugas.</p>
+    <p>Aplikasi ini tidak berafiliasi dengan PMI atau organisasi Palang Merah mana pun.</p>
+  </div>
+</footer>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
